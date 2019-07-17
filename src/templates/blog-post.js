@@ -1,7 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
 import moment from "moment"
-import Layout from "../components/layout"
+import Page from "../components/page"
 import { Bio } from "../components/bio"
 import { H1, RichText, Meta, P, Tag } from "../components/typography"
 
@@ -9,7 +9,7 @@ export default function BlogPost({ data }) {
   const post = data.contentfulBlogPost
   const document = data.contentfulBlogPost.body.json
   return (
-    <Layout>
+    <Page>
       {post.tags.map(tag => {
         return <Tag key={tag}>{tag}</Tag>
       })}
@@ -19,7 +19,7 @@ export default function BlogPost({ data }) {
       <Img fluid={post.image.fluid} />
       <RichText document={document} />
       <Bio {...post.author} />
-    </Layout>
+    </Page>
   )
 }
 

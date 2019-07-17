@@ -1,9 +1,10 @@
 import React from "react"
-import Layout from "../components/layout"
+import Page from "../components/page"
 import { H1, P, RichText } from "../components/typography"
 import { Bio } from "../components/bio"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { Partner } from "../components/partner"
+import { Post } from "../components/post"
 import { Card } from "../components/card"
 
 export default function Group({ data }) {
@@ -14,7 +15,7 @@ export default function Group({ data }) {
   })
 
   return (
-    <Layout>
+    <Page>
       <H1>{group.title}</H1>
       <P>{group.intro.intro}</P>
       <RichText document={document} />
@@ -54,18 +55,24 @@ export default function Group({ data }) {
       >
         {group.blogPosts &&
           group.blogPosts.map(post => {
-            return <Card key={post.title} {...post} />
+            return <Post key={post.title} {...post} />
           })}
       </div>
-      {otherGroups &&
-        otherGroups.map(({ node }) => {
-          return (
-            <Link key={node.slug} to={`/${node.slug}`}>
-              {node.title}
-            </Link>
-          )
-        })}
-    </Layout>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gridGap: "30px",
+          justifyItems: "center",
+          alignItems: "center",
+        }}
+      >
+        {otherGroups &&
+          otherGroups.map(({ node }) => {
+            return <Card key={node.title} {...node} />
+          })}{" "}
+      </div>
+    </Page>
   )
 }
 

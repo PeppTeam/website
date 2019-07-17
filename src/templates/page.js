@@ -1,13 +1,13 @@
 import React from "react"
-import Layout from "../components/layout"
+import Page from "../components/page"
 import { RichText } from "../components/typography"
 
 export default function BlogPost({ data }) {
   const document = data.contentfulPage.body.json
   return (
-    <Layout>
+    <Page>
       <RichText document={document} />
-    </Layout>
+    </Page>
   )
 }
 

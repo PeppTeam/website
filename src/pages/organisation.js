@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "../components/layout"
+import Page from "../components/page"
 import SEO from "../components/seo"
 import { H1, H2, P } from "../components/typography"
 import { Bio } from "../components/bio"
@@ -9,7 +9,7 @@ function OrganisationPage({ data }) {
   const groups = data.allContentfulOrganisation.edges
 
   return (
-    <Layout>
+    <Page>
       <SEO title="Organisationen" />
       <H1>Organisationen</H1>
       <P>Mer info</P>
@@ -35,7 +35,7 @@ function OrganisationPage({ data }) {
           )
         })}
       </section>
-    </Layout>
+    </Page>
   )
 }
 

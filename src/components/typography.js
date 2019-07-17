@@ -25,6 +25,18 @@ export const H2 = ({ children }) => (
   </h2>
 )
 
+export const H3 = ({ children }) => (
+  <h3
+    style={{
+      marginBottom: `1.45rem`,
+      fontFamily: "Catamaran",
+      fontWeight: 800,
+    }}
+  >
+    {children}
+  </h3>
+)
+
 export const P = ({ children }) => (
   <p
     style={{

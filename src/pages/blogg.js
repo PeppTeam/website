@@ -1,8 +1,8 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import Layout from "../components/layout"
+import Page from "../components/page"
 import SEO from "../components/seo"
-import { Card } from "../components/card"
+import { Post } from "../components/post"
 
 function BlogPage() {
   return (
@@ -29,7 +29,7 @@ function BlogPage() {
         }
       `}
       render={({ allContentfulBlogPost, props }) => (
-        <Layout>
+        <Page>
           <SEO title="Blog" />
           <div
             style={{
@@ -40,10 +40,10 @@ function BlogPage() {
             }}
           >
             {allContentfulBlogPost.edges.map(({ node }) => {
-              return <Card {...node} key={node.title} />
+              return <Post {...node} key={node.title} />
             })}
           </div>
-        </Layout>
+        </Page>
       )}
     />
   )

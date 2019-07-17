@@ -1,10 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
+import Page from "../components/page"
 import SEO from "../components/seo"
 import { H1, H2, P } from "../components/typography"
 import { Partner } from "../components/partner"
+import { Post } from "../components/post"
 import { Card } from "../components/card"
 
 function IndexPage({ data }) {
@@ -18,7 +19,7 @@ function IndexPage({ data }) {
   const blogPosts = data.allContentfulBlogPost.edges
 
   return (
-    <Layout>
+    <Page>
       <SEO title="Home" />
       <H1>Hej, vi är Pepp!</H1>
       <P>
@@ -44,23 +45,28 @@ function IndexPage({ data }) {
             gridTemplateColumns: "repeat(3, 1fr)",
             gridGap: "30px",
             justifyItems: "center",
-            alignItems: "center",
           }}
         >
           {blogPosts.map(({ node }) => {
-            return <Card {...node} key={node.title} />
+            return <Post {...node} key={node.title} />
           })}
         </div>
       </section>
       <section>
         <H2>Mentorsprogram</H2>
-        {groups.map(({ node }) => {
-          return (
-            <Link to={`/${node.slug}`} key={node.title}>
-              {node.title}
-            </Link>
-          )
-        })}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gridGap: "30px",
+            justifyItems: "center",
+            alignItems: "center",
+          }}
+        >
+          {groups.map(({ node }) => {
+            return <Card {...node} key={node.title} />
+          })}
+        </div>
       </section>
       <section>
         <H2>Om Pepp</H2>
@@ -99,7 +105,7 @@ function IndexPage({ data }) {
           })}
         </div>
       </section>
-    </Layout>
+    </Page>
   )
 }
 
