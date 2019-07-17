@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-
+import { P } from "../components/typography"
 const Header = ({ siteTitle }) => (
   <header
     style={{
@@ -23,14 +23,26 @@ const Header = ({ siteTitle }) => (
       >
         {siteTitle}
       </Link>
-
-      <Link to="/blogg">Blogg</Link>
+      <P>Om Pepp</P>
 
       <Link to="/om-pepp">Om Pepp</Link>
 
       <Link to="/organisation">Organisation</Link>
+      <Link to="/mentorsprogram">Mentorsprogram</Link>
+      <Link to="/samarbete">Samarbete</Link>
 
+      <P>Vart finns vi?</P>
       <Link to="/stockholm">Stockholm</Link>
+      <Link to="/goteborg">Göteborg</Link>
+      <Link to="/lulea">Luleå</Link>
+      <Link to="/linkoping">Linköping</Link>
+      <Link to="/umea">Umeå</Link>
+      <P>
+        <Link to="/">Vill du vara med?</Link>
+      </P>
+      <P>
+        <Link to="/blogg">Blogg</Link>
+      </P>
     </div>
   </header>
 )

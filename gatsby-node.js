@@ -65,4 +65,34 @@ exports.createPages = ({ graphql, actions }) => {
         })
       })
     })
+    .then(() => {
+      graphql(
+        `
+          {
+            allContentfulPage(limit: 1000) {
+              edges {
+                node {
+                  slug
+                }
+              }
+            }
+          }
+        `
+      ).then(result => {
+        if (result.errors) {
+          throw result.errors
+        }
+
+        const pageTemplate = path.resolve(`./src/templates/page.js`)
+        _.each(result.data.allContentfulPage.edges, edge => {
+          createPage({
+            path: `/${edge.node.slug}/`,
+            component: slash(pageTemplate),
+            context: {
+              slug: edge.node.slug,
+            },
+          })
+        })
+      })
+    })
 }

@@ -7,7 +7,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
@@ -36,9 +36,25 @@ const Layout = ({ children }) => {
       >
         <main>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(5, 1fr)",
+              gridGap: "30px",
+              justifyItems: "center",
+              alignItems: "center",
+            }}
+          >
+            {[
+              { children: "Press", to: "/press" },
+              { children: "Kontakt", to: "/kontakt" },
+              { children: "Värderingar", to: "/varderingar" },
+              { children: "Dataskydd", to: "/dataskydd" },
+              { children: "In English 🇬🇧", to: "/in-english" },
+            ].map(l => {
+              return <Link {...l} />
+            })}
+          </div>
         </footer>
       </div>
     </>
