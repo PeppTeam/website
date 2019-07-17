@@ -17,12 +17,21 @@ function OrganisationPage({ data }) {
       <section>
         {groups.map(({ node }) => {
           return (
-            <>
+            <div key={node.title}>
               <H2>{node.title}</H2>
-              {node.persons.map(({ name }) => {
-                return <Bio name={name} />
-              })}
-            </>
+              <P>{node.text.text}</P>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(4, 1fr)",
+                  gridGap: "50px",
+                }}
+              >
+                {node.persons.map(p => {
+                  return <Bio {...p} key={p.name} />
+                })}
+              </div>
+            </div>
           )
         })}
       </section>
@@ -38,8 +47,20 @@ export const organisationPageQuery = graphql`
       edges {
         node {
           title
+          text {
+            text
+          }
           persons {
             name
+            role
+            image {
+              fluid(maxWidth: 1024, maxHeight: 1024) {
+                src
+                srcSet
+                sizes
+                aspectRatio
+              }
+            }
           }
         }
       }

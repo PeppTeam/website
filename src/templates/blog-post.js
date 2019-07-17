@@ -7,7 +7,7 @@ import { H1, RichText, Meta, P, Tag } from "../components/typography"
 
 export default function BlogPost({ data }) {
   const post = data.contentfulBlogPost
-  const document = data.contentfulBlogPost.text.json
+  const document = data.contentfulBlogPost.body.json
   return (
     <Layout>
       {post.tags.map(tag => {
@@ -15,10 +15,10 @@ export default function BlogPost({ data }) {
       })}
       <H1>{post.title}</H1>
       <Meta>{moment(post.publishDate).format("LL", "fr")}</Meta>
-      <P>{post.description.description}</P>
-      <Img fluid={post.heroImage.fluid} />
+      <P>{post.intro.intro}</P>
+      <Img fluid={post.image.fluid} />
       <RichText document={document} />
-      <Bio name={post.author.name} />
+      <Bio {...post.author} />
     </Layout>
   )
 }
@@ -27,19 +27,19 @@ export const blogPostPageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
-      heroImage {
-        fluid(maxWidth: 1600, maxHeight: 900) {
+      intro {
+        intro
+      }
+      body {
+        json
+      }
+      image {
+        fluid(maxWidth: 600, maxHeight: 600, quality: 100) {
           src
           srcSet
           sizes
           aspectRatio
         }
-      }
-      description {
-        description
-      }
-      text {
-        json
       }
       author {
         name

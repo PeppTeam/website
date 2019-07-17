@@ -4,6 +4,8 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { H1, H2, P } from "../components/typography"
+import { Partner } from "../components/partner"
+import { Card } from "../components/card"
 
 function IndexPage({ data }) {
   const partners = data.allContentfulPartner.edges.filter(({ node }) => {
@@ -36,32 +38,66 @@ function IndexPage({ data }) {
         gymnasiet.
       </P>
       <section>
-        {blogPosts.map(({ node }) => {
-          return <Link to={`/blogg/${node.slug}`}>{node.title}</Link>
-        })}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gridGap: "30px",
+            justifyItems: "center",
+            alignItems: "center",
+          }}
+        >
+          {blogPosts.map(({ node }) => {
+            return <Card {...node} key={node.title} />
+          })}
+        </div>
       </section>
       <section>
         <H2>Mentorsprogram</H2>
         {groups.map(({ node }) => {
-          return <Link to={`/${node.slug}`}>{node.title}</Link>
+          return (
+            <Link to={`/${node.slug}`} key={node.title}>
+              {node.title}
+            </Link>
+          )
         })}
       </section>
       <section>
         <H2>Om Pepp</H2>
-        <P>Vi startde..</P>
+        <P>Vi startade..</P>
         <Link to="/om-pepp/">Läs mer</Link>
       </section>
       <section>
         <H2>Vi stödjer Pepp</H2>
-        {partners.map(({ node }) => {
-          return <P>{node.name}</P>
-        })}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(75px, 1fr))",
+            gridGap: "50px",
+            justifyItems: "center",
+            alignItems: "end",
+          }}
+        >
+          {partners.map(({ node }) => {
+            return <Partner key={node.name} {...node} />
+          })}
+        </div>
       </section>
       <section>
         <H2>Våra vänner</H2>
-        {friends.map(({ node }) => {
-          return <P>{node.name}</P>
-        })}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(8, 1fr)",
+            gridGap: "30px",
+            justifyItems: "center",
+            alignItems: "center",
+          }}
+        >
+          {friends.map(({ node }) => {
+            return <Partner key={node.name} {...node} />
+          })}
+        </div>
       </section>
     </Layout>
   )
@@ -102,6 +138,14 @@ export const homePageQuery = graphql`
         node {
           title
           slug
+          image {
+            fluid(maxWidth: 600, maxHeight: 600, quality: 100) {
+              src
+              srcSet
+              sizes
+              aspectRatio
+            }
+          }
         }
       }
     }

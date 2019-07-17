@@ -15,19 +15,22 @@ const Header = ({ siteTitle }) => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+      <Link
+        to="/"
+        style={{
+          textDecoration: `none`,
+        }}
+      >
+        {siteTitle}
+      </Link>
+
       <Link to="/blogg">Blogg</Link>
+
       <Link to="/om-pepp">Om Pepp</Link>
+
       <Link to="/organisation">Organisation</Link>
+
+      <Link to="/stockholm">Stockholm</Link>
     </div>
   </header>
 )

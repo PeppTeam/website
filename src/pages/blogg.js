@@ -1,9 +1,8 @@
 import React from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Img from "gatsby-image"
-import { H2, Tag } from "../components/typography"
+import { Card } from "../components/card"
 
 function BlogPage() {
   return (
@@ -15,10 +14,9 @@ function BlogPage() {
               node {
                 title
                 slug
-                publishDate
                 tags
-                heroImage {
-                  fluid(maxWidth: 800, maxHeight: 600) {
+                image {
+                  fluid(maxWidth: 600, maxHeight: 600, quality: 100) {
                     src
                     srcSet
                     sizes
@@ -33,18 +31,18 @@ function BlogPage() {
       render={({ allContentfulBlogPost, props }) => (
         <Layout>
           <SEO title="Blog" />
-
-          {allContentfulBlogPost.edges.map(({ node }) => {
-            return (
-              <Link to={`blogg/${node.slug}`}>
-                <Img fluid={node.heroImage.fluid} />
-                {node.tags.map(tag => {
-                  return <Tag>{tag}</Tag>
-                })}
-                <H2>{node.title}</H2>
-              </Link>
-            )
-          })}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+              gridGap: "30px",
+              justifyItems: "center",
+            }}
+          >
+            {allContentfulBlogPost.edges.map(({ node }) => {
+              return <Card {...node} key={node.title} />
+            })}
+          </div>
         </Layout>
       )}
     />

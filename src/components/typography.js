@@ -5,6 +5,8 @@ export const H1 = ({ children }) => (
   <h1
     style={{
       marginBottom: `1.45rem`,
+      fontFamily: "Catamaran",
+      fontWeight: 900,
     }}
   >
     {children}
@@ -15,6 +17,8 @@ export const H2 = ({ children }) => (
   <h2
     style={{
       marginBottom: `1.45rem`,
+      fontFamily: "Catamaran",
+      fontWeight: 800,
     }}
   >
     {children}
@@ -25,6 +29,7 @@ export const P = ({ children }) => (
   <p
     style={{
       marginBottom: `1.45rem`,
+      fontFamily: "Catamaran",
     }}
   >
     {children}
@@ -34,8 +39,9 @@ export const P = ({ children }) => (
 export const Meta = ({ children }) => (
   <p
     style={{
-      marginBottom: `1.45rem`,
-      fontSize: "0.5em",
+      fontSize: "0.8em",
+      fontFamily: "Catamaran",
+      margin: 0,
     }}
   >
     {children}
@@ -43,15 +49,20 @@ export const Meta = ({ children }) => (
 )
 
 export const Tag = ({ children }) => (
-  <p
-    style={{
-      marginBottom: `1.45rem`,
-      fontSize: "0.5em",
-      color: "green",
-    }}
+  <div
+    style={{ backgroundColor: "black", padding: "2px", borderRadius: "4px" }}
   >
-    {children}
-  </p>
+    <span
+      style={{
+        color: "white",
+        fontFamily: "Catamaran",
+        fontWeight: "bold",
+        fontSize: "10px",
+      }}
+    >
+      {children}
+    </span>
+  </div>
 )
 
 export const Quote = ({ children }) => (
