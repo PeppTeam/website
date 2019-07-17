@@ -6,6 +6,7 @@ import { graphql } from "gatsby"
 import { Partner } from "../components/partner"
 import { Post } from "../components/post"
 import { Card } from "../components/card"
+import { Section } from "../components/layout"
 
 export default function Group({ data }) {
   const group = data.contentfulGroup
@@ -16,62 +17,74 @@ export default function Group({ data }) {
 
   return (
     <Page>
-      <H1>{group.title}</H1>
-      <P>{group.intro.intro}</P>
-      <RichText document={document} />
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gridGap: "50px",
-        }}
-      >
-        {group.persons &&
-          group.persons.map(person => {
-            return <Bio key={person.name} {...person} />
-          })}
-      </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(75px, 1fr))",
-          gridGap: "50px",
-          justifyItems: "center",
-          alignItems: "center",
-        }}
-      >
-        {group.partners &&
-          group.partners.map(partner => {
-            return <Partner key={partner.name} {...partner} />
-          })}
-      </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gridGap: "30px",
-          justifyItems: "center",
-        }}
-      >
-        {group.blogPosts &&
-          group.blogPosts.map(post => {
-            return <Post key={post.title} {...post} />
-          })}
-      </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gridGap: "30px",
-          justifyItems: "center",
-          alignItems: "center",
-        }}
-      >
-        {otherGroups &&
-          otherGroups.map(({ node }) => {
-            return <Card key={node.title} {...node} />
-          })}{" "}
-      </div>
+      <Section>
+        <H1>{group.title}</H1>
+        <P>{group.intro.intro}</P>
+      </Section>
+      <Section>
+        <RichText document={document} />
+      </Section>
+      <Section>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gridGap: "50px",
+          }}
+        >
+          {group.persons &&
+            group.persons.map(person => {
+              return <Bio key={person.name} {...person} />
+            })}
+        </div>
+      </Section>
+      <Section>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(75px, 1fr))",
+            gridGap: "50px",
+            justifyItems: "center",
+            alignItems: "center",
+          }}
+        >
+          {group.partners &&
+            group.partners.map(partner => {
+              return <Partner key={partner.name} {...partner} />
+            })}
+        </div>
+      </Section>
+      <Section>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gridGap: "30px",
+            justifyItems: "center",
+          }}
+        >
+          {group.blogPosts &&
+            group.blogPosts.map(post => {
+              return <Post key={post.title} {...post} />
+            })}
+        </div>
+      </Section>
+      <Section>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gridGap: "30px",
+            justifyItems: "center",
+            alignItems: "center",
+          }}
+        >
+          {otherGroups &&
+            otherGroups.map(({ node }) => {
+              return <Card key={node.title} {...node} />
+            })}
+        </div>
+      </Section>
     </Page>
   )
 }

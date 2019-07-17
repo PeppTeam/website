@@ -7,7 +7,7 @@ import { H1, H2, P } from "../components/typography"
 import { Partner } from "../components/partner"
 import { Post } from "../components/post"
 import { Card } from "../components/card"
-
+import { Section } from "../components/layout"
 function IndexPage({ data }) {
   const partners = data.allContentfulPartner.edges.filter(({ node }) => {
     return node.homePage === "Partner"
@@ -21,28 +21,39 @@ function IndexPage({ data }) {
   return (
     <Page>
       <SEO title="Home" />
-      <H1>Hej, vi är Pepp!</H1>
-      <P>
-        Pepp är ett mentorsskapsprogram där du som tjej* får en mentor från
-        universitetet som hjälper dig upptäcka de oändliga möjligheterna
-        teknikbranschen har att erbjuda. Det spelar ingen roll om du är helt
-        oteknisk, väldigt teknikintresserad eller något däremellan. Pepp är för
-        alla oavsett bakgrund eller intressen!
-      </P>
-      <P>
-        Sedan starten 2013 har över 800 gymnasietjejer och ingenjörsstudenter
-        deltagit i Pepp som adepter, mentorer eller i någon av våra
-        projektgrupper.
-      </P>
-      <P>
-        * Pepp välkomnar alla som identifierar sig som tjejer och som går i
-        gymnasiet.
-      </P>
-      <section>
+      <section
+        style={{
+          minHeight: "60vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}
+      >
+        <H1>Hej, vi är Pepp!</H1>
+        <P>
+          Pepp är ett mentorsskapsprogram där du som tjej* får en mentor från
+          universitetet som hjälper dig upptäcka de oändliga möjligheterna
+          teknikbranschen har att erbjuda. Det spelar ingen roll om du är helt
+          oteknisk, väldigt teknikintresserad eller något däremellan. Pepp är
+          för alla oavsett bakgrund eller intressen!
+        </P>
+        <P>
+          Sedan starten 2013 har över 800 gymnasietjejer och ingenjörsstudenter
+          deltagit i Pepp som adepter, mentorer eller i någon av våra
+          projektgrupper.
+        </P>
+        <P>
+          * Pepp välkomnar alla som identifierar sig som tjejer och som går i
+          gymnasiet.
+        </P>{" "}
+      </section>
+
+      <Section>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
             gridGap: "30px",
             justifyItems: "center",
           }}
@@ -51,8 +62,8 @@ function IndexPage({ data }) {
             return <Post {...node} key={node.title} />
           })}
         </div>
-      </section>
-      <section>
+      </Section>
+      <Section>
         <H2>Mentorsprogram</H2>
         <div
           style={{
@@ -67,13 +78,13 @@ function IndexPage({ data }) {
             return <Card {...node} key={node.title} />
           })}
         </div>
-      </section>
-      <section>
+      </Section>
+      <Section>
         <H2>Om Pepp</H2>
         <P>Vi startade..</P>
         <Link to="/om-pepp/">Läs mer</Link>
-      </section>
-      <section>
+      </Section>
+      <Section>
         <H2>Vi stödjer Pepp</H2>
         <div
           style={{
@@ -88,8 +99,8 @@ function IndexPage({ data }) {
             return <Partner key={node.name} {...node} />
           })}
         </div>
-      </section>
-      <section>
+      </Section>
+      <Section>
         <H2>Våra vänner</H2>
         <div
           style={{
@@ -104,7 +115,7 @@ function IndexPage({ data }) {
             return <Partner key={node.name} {...node} />
           })}
         </div>
-      </section>
+      </Section>
     </Page>
   )
 }
@@ -137,7 +148,7 @@ export const homePageQuery = graphql`
       }
     }
     allContentfulBlogPost(
-      limit: 3
+      limit: 4
       sort: { order: DESC, fields: publishDate }
     ) {
       edges {
