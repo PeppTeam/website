@@ -17,44 +17,51 @@ export default function Group({ data }) {
 
   return (
     <Page>
-      <Section>
-        <H1>{group.title}</H1>
-      </Section>
-      <Section>
-        <RichText document={document} />
-      </Section>
-      <Section>
-        <H2>Vi är Pepp {group.title}</H2>
+      {group.title && (
+        <Section>
+          <H1>{group.title}</H1>
+        </Section>
+      )}
+      {document && (
+        <Section>
+          <RichText document={document} />
+        </Section>
+      )}
+      {group.persons && (
+        <Section>
+          <H2>Vi är Pepp {group.title}</H2>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
-            gridGap: "50px",
-          }}
-        >
-          {group.persons &&
-            group.persons.map(person => {
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
+              gridGap: "50px",
+            }}
+          >
+            {group.persons.map(person => {
               return <Bio key={person.name} {...person} />
             })}
-        </div>
-      </Section>
+          </div>
+        </Section>
+      )}
+      {group.blogPosts && (
+        <Section>
+          <H2>Senaste blogginläggen från {group.title}</H2>
 
-      <Section>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-            gridGap: "30px",
-            justifyItems: "center",
-          }}
-        >
-          {group.blogPosts &&
-            group.blogPosts.map(post => {
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+              gridGap: "30px",
+              justifyItems: "center",
+            }}
+          >
+            {group.blogPosts.map(post => {
               return <Post key={post.title} {...post} />
             })}
-        </div>
-      </Section>
+          </div>
+        </Section>
+      )}
       {group.partners && (
         <Section>
           <H2>Våra samarbetspartners</H2>
@@ -64,7 +71,7 @@ export default function Group({ data }) {
               gridTemplateColumns: "repeat(auto-fill, minmax(75px, 1fr))",
               gridGap: "50px",
               justifyItems: "center",
-              alignItems: "center",
+              alignItems: "end",
             }}
           >
             {group.partners.map(partner => {
@@ -73,22 +80,23 @@ export default function Group({ data }) {
           </div>
         </Section>
       )}
-      <Section>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-            gridGap: "30px",
-            justifyItems: "center",
-            alignItems: "center",
-          }}
-        >
-          {otherGroups &&
-            otherGroups.map(({ node }) => {
+      {otherGroups && (
+        <Section>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+              gridGap: "30px",
+              justifyItems: "center",
+              alignItems: "center",
+            }}
+          >
+            {otherGroups.map(({ node }) => {
               return <Card key={node.title} {...node} />
             })}
-        </div>
-      </Section>
+          </div>
+        </Section>
+      )}
     </Page>
   )
 }
