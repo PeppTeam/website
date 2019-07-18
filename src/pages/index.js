@@ -105,8 +105,8 @@ function IndexPage({ data }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(8, 1fr)",
-            gridGap: "30px",
+            gridTemplateColumns: "repeat(auto-fill, minmax(125px, 1fr))",
+            gridGap: "50px",
             justifyItems: "center",
             alignItems: "center",
           }}

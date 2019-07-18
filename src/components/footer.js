@@ -47,6 +47,7 @@ const Footer = () => {
       {data.map(d => {
         return (
           <div
+            key={d.heading}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -67,6 +68,7 @@ const Footer = () => {
             {d.links.map(l => {
               return (
                 <Link
+                  key={l.children}
                   style={{
                     fontFamily: "catamaran",
                     color: "black",

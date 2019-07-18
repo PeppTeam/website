@@ -1,11 +1,17 @@
 import React from "react"
+import styled from "styled-components"
 
 export const Section = ({ children }) => (
   <section
     style={{
-      marginBottom: `72px`,
+      marginBottom: `128px`,
     }}
   >
     <div style={{ margin: `0 auto`, maxWidth: 960 }}>{children}</div>
   </section>
 )
+
+export const Content = styled.div`
+  max-width: 40em;
+  margin: 0 auto;
+`

@@ -1,12 +1,15 @@
 import React from "react"
 import Page from "../components/page"
 import { RichText } from "../components/typography"
+import { Section } from "../components/layout"
 
 export default function BlogPost({ data }) {
   const document = data.contentfulPage.body.json
   return (
     <Page>
-      <RichText document={document} />
+      <Section>
+        <RichText document={document} />
+      </Section>
     </Page>
   )
 }

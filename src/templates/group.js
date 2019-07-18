@@ -20,13 +20,10 @@ export default function Group({ data }) {
       {group.title && (
         <Section>
           <H1>{group.title}</H1>
+          {document && <RichText document={document} />}
         </Section>
       )}
-      {document && (
-        <Section>
-          <RichText document={document} />
-        </Section>
-      )}
+
       {group.persons && (
         <Section>
           <H2>Vi är Pepp {group.title}</H2>

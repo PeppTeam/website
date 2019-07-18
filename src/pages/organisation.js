@@ -42,7 +42,7 @@ function OrganisationPage({ data }) {
 export default OrganisationPage
 
 export const organisationPageQuery = graphql`
-  query Organisations {
+  query Organisation {
     allContentfulOrganisation {
       edges {
         node {
