@@ -1,6 +1,6 @@
 import React from "react"
 import Page from "../components/page"
-import { H1, RichText } from "../components/typography"
+import { H1, RichText, H2 } from "../components/typography"
 import { Bio } from "../components/bio"
 import { graphql } from "gatsby"
 import { Partner } from "../components/partner"
@@ -24,10 +24,12 @@ export default function Group({ data }) {
         <RichText document={document} />
       </Section>
       <Section>
+        <H2>Vi är Pepp {group.title}</H2>
+
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
             gridGap: "50px",
           }}
         >
@@ -37,27 +39,12 @@ export default function Group({ data }) {
             })}
         </div>
       </Section>
+
       <Section>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(75px, 1fr))",
-            gridGap: "50px",
-            justifyItems: "center",
-            alignItems: "center",
-          }}
-        >
-          {group.partners &&
-            group.partners.map(partner => {
-              return <Partner key={partner.name} {...partner} />
-            })}
-        </div>
-      </Section>
-      <Section>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
             gridGap: "30px",
             justifyItems: "center",
           }}
@@ -68,11 +55,29 @@ export default function Group({ data }) {
             })}
         </div>
       </Section>
+      {group.partners && (
+        <Section>
+          <H2>Våra samarbetspartners</H2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(75px, 1fr))",
+              gridGap: "50px",
+              justifyItems: "center",
+              alignItems: "center",
+            }}
+          >
+            {group.partners.map(partner => {
+              return <Partner key={partner.name} {...partner} />
+            })}
+          </div>
+        </Section>
+      )}
       <Section>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
             gridGap: "30px",
             justifyItems: "center",
             alignItems: "center",

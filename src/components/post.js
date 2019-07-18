@@ -2,12 +2,10 @@ import React from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import { H3 } from "./typography"
+import { Clickable } from "../components/actions"
 
 export const Post = ({ image, slug, title, tags }) => (
-  <Link
-    to={`/blogg/${slug}`}
-    style={{ textDecoration: "none", color: "black" }}
-  >
+  <Clickable to={`/blogg/${slug}`}>
     {image && (
       <div
         style={{
@@ -59,5 +57,5 @@ export const Post = ({ image, slug, title, tags }) => (
         })}
     </div>
     <H3>{title}</H3>
-  </Link>
+  </Clickable>
 )
