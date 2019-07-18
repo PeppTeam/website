@@ -1,6 +1,6 @@
 import React from "react"
 import Page from "../components/page"
-import { H1, P, RichText } from "../components/typography"
+import { H1, RichText } from "../components/typography"
 import { Bio } from "../components/bio"
 import { graphql } from "gatsby"
 import { Partner } from "../components/partner"
@@ -10,7 +10,7 @@ import { Section } from "../components/layout"
 
 export default function Group({ data }) {
   const group = data.contentfulGroup
-  const document = data.contentfulGroup.text.json
+  const document = data.contentfulGroup.body.json
   const otherGroups = data.allContentfulGroup.edges.filter(({ node }) => {
     return node.slug !== group.slug
   })
@@ -19,7 +19,6 @@ export default function Group({ data }) {
     <Page>
       <Section>
         <H1>{group.title}</H1>
-        <P>{group.intro.intro}</P>
       </Section>
       <Section>
         <RichText document={document} />
@@ -94,10 +93,8 @@ export const groupPageQuery = graphql`
     contentfulGroup(slug: { eq: $slug }) {
       slug
       title
-      intro {
-        intro
-      }
-      text {
+
+      body {
         json
       }
       persons {
