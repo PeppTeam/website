@@ -3,7 +3,6 @@ import { Card } from "../components/card"
 
 export const ActionsGroups = fields => {
   const groups = fields.fields.groups["en-US"]
-  console.log(groups)
   return (
     <div
       style={{
@@ -15,7 +14,6 @@ export const ActionsGroups = fields => {
       }}
     >
       {groups.map(i => {
-        console.log(i)
         const title = i.fields.title["en-US"]
         const slug = i.fields.slug["en-US"]
         return <Card key={title} title={title} slug={slug} />
@@ -26,7 +24,6 @@ export const ActionsGroups = fields => {
 
 export const ActionsLinks = fields => {
   const pages = fields.fields.pages["en-US"]
-  console.log(pages)
   return (
     <div
       style={{
@@ -38,7 +35,6 @@ export const ActionsLinks = fields => {
       }}
     >
       {pages.map(i => {
-        console.log(i)
         const title = i.fields.title["en-US"]
         const slug = i.fields.slug["en-US"]
         return <Card key={title} title={title} slug={slug} />
@@ -49,7 +45,6 @@ export const ActionsLinks = fields => {
 
 export const ActionsJoin = fields => {
   const pages = fields.fields.pages["en-US"]
-  console.log(pages)
   return (
     <div
       style={{
@@ -61,7 +56,6 @@ export const ActionsJoin = fields => {
       }}
     >
       {pages.map(i => {
-        console.log(i)
         const title = i.fields.title["en-US"]
         const slug = i.fields.slug["en-US"]
         return <Card key={title} title={title} slug={slug} />
