@@ -1,5 +1,4 @@
 import React from "react"
-import Img from "gatsby-image"
 
 export const Bio = ({ name, role, image }) => (
   <div style={{ textAlign: "center" }}>
@@ -7,12 +6,22 @@ export const Bio = ({ name, role, image }) => (
       <div
         style={{
           borderRadius: "50%",
-          overflow: "hidden",
-          boxShadow: "inset 0 0 24px #A6A6A6",
+          background: `url(https:${image})`,
+          paddingTop: "100%",
+          position: "relative",
+          backgroundSize: "cover",
           marginBottom: "16px",
         }}
       >
-        <Img fluid={image.fluid} style={{ zIndex: -1 }} />
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+          }}
+        />
       </div>
     )}
 

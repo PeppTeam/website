@@ -9,7 +9,6 @@ const Ratio = ({ children }) => (
       overflow: "hidden",
       width: "100%",
       backgroundColor: "#3EC6FF",
-
       paddingTop: "56.25%",
       position: "relative",
     }}

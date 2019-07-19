@@ -3,6 +3,8 @@ import styled from "styled-components"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { Asset } from "../components/asset"
+import { ActionsGroups, ActionsLinks } from "../blocks/Actions"
+import { Team } from "../blocks/Team"
 
 export const H1 = styled.h1`
   margin-bottom: 1.45rem;
@@ -28,6 +30,7 @@ export const H4 = styled.h4`
 export const P = styled.p`
   margin-bottom: 1.45rem;
   font-family: "Catamaran";
+  color: rgb(83, 98, 124);
 `
 
 export const Meta = styled(P)`
@@ -86,10 +89,22 @@ const options = {
     ),
     [BLOCKS.QUOTE]: (node, children) => <Quote>{children}</Quote>,
     [BLOCKS.EMBEDDED_ENTRY]: node => {
-      const { description, image } = node.data.target.fields
-      const url = image["en-US"].fields.file["en-US"].url
-      const text = description["en-US"]
-      return <Asset url={url} description={text} />
+      const fields = node.data.target.fields
+      switch (node.data.target.sys.contentType.sys.id) {
+        case "actionsGroups":
+          return <ActionsGroups fields={fields} />
+        case "actionsLinks":
+          return <ActionsLinks fields={fields} />
+        case "blockTeam":
+          return <Team fields={fields} />
+        case "image":
+          const { description, image } = fields
+          const url = image["en-US"].fields.file["en-US"].url
+          const text = description["en-US"]
+          return <Asset url={url} description={text} />
+        default:
+          return null
+      }
     },
   },
 }

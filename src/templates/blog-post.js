@@ -7,6 +7,7 @@ import { H1, H2, RichText, P, Tag } from "../components/typography"
 import { Section, Content } from "../components/layout"
 import { Post } from "../components/post"
 import styled from "styled-components"
+import SEO from "../components/seo"
 
 const Title = styled(H1)`
   text-align: center;
@@ -28,6 +29,7 @@ export default function BlogPost({ data }) {
   const posts = data.allContentfulBlogPost.edges
   return (
     <Page>
+      <SEO title={post.title} />
       <Section>
         <Content>
           <div

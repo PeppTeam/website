@@ -1,12 +1,12 @@
 import React from "react"
 import Page from "../components/page"
 import { H1, RichText, H2 } from "../components/typography"
-import { Bio } from "../components/bio"
 import { graphql } from "gatsby"
 import { Partner } from "../components/partner"
 import { Post } from "../components/post"
 import { Card } from "../components/card"
 import { Section } from "../components/layout"
+import SEO from "../components/seo"
 
 export default function Group({ data }) {
   const group = data.contentfulGroup
@@ -17,6 +17,7 @@ export default function Group({ data }) {
 
   return (
     <Page>
+      <SEO title={group.title} />
       {group.title && (
         <Section>
           <H1>{group.title}</H1>
@@ -24,23 +25,6 @@ export default function Group({ data }) {
         </Section>
       )}
 
-      {group.persons && (
-        <Section>
-          <H2>Vi är Pepp {group.title}</H2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
-              gridGap: "50px",
-            }}
-          >
-            {group.persons.map(person => {
-              return <Bio key={person.name} {...person} />
-            })}
-          </div>
-        </Section>
-      )}
       {group.blogPosts && (
         <Section>
           <H2>Senaste blogginläggen från {group.title}</H2>
@@ -107,18 +91,7 @@ export const groupPageQuery = graphql`
       body {
         json
       }
-      persons {
-        name
-        role
-        image {
-          fluid(maxWidth: 1024, maxHeight: 1024) {
-            src
-            srcSet
-            sizes
-            aspectRatio
-          }
-        }
-      }
+
       partners {
         name
         logo {

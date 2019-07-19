@@ -1,5 +1,15 @@
 import React from "react"
 import { Link } from "gatsby"
+import styled from "styled-components"
+
+const NavLink = styled(Link)`
+  color: rgb(83, 98, 124);
+  text-decoration: none;
+  :hover {
+    opacity: 0.8;
+  }
+`
+
 const data = [
   {
     heading: "Om Pepp",
@@ -66,17 +76,7 @@ const Footer = () => {
               {d.heading}
             </p>
             {d.links.map(l => {
-              return (
-                <Link
-                  key={l.children}
-                  style={{
-                    fontFamily: "catamaran",
-                    color: "black",
-                    textDecoration: "none",
-                  }}
-                  {...l}
-                />
-              )
+              return <NavLink key={l.children} {...l} />
             })}
           </div>
         )

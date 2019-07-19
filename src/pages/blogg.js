@@ -30,7 +30,7 @@ function BlogPage() {
       `}
       render={({ allContentfulBlogPost, props }) => (
         <Page>
-          <SEO title="Blog" />
+          <SEO title="Blogg" />
           <div
             style={{
               display: "grid",
