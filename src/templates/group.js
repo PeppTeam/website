@@ -91,7 +91,6 @@ export const groupPageQuery = graphql`
       body {
         json
       }
-
       partners {
         name
         logo {
