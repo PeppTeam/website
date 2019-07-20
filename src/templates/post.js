@@ -25,10 +25,39 @@ const Date = styled(P)`
   text-align: center;
 `
 
+function getRelatedPosts(posts, tags) {
+  let recommendedPosts = []
+
+  const relatedPosts = posts.filter(({ node }) => {
+    return node.tags.some(t => {
+      return tags.includes(t)
+    })
+  })
+
+  if (relatedPosts.length > 0) {
+    recommendedPosts = relatedPosts
+  } else {
+    recommendedPosts = posts
+  }
+
+  recommendedPosts.sort(function(a, b) {
+    return 0.5 - Math.random()
+  })
+
+  return recommendedPosts.slice(0, 3)
+}
+
 export default function BlogPost({ data }) {
   const post = data.contentfulBlogPost
   const document = data.contentfulBlogPost.body.json
-  const posts = data.allContentfulBlogPost.edges
+  const author = post.author
+  const recommendedPosts = getRelatedPosts(
+    data.allContentfulBlogPost.edges,
+    post.tags
+  )
+
+  // Todo: Filtrera bort den här posten, random order, om det inte finns, visa tre random
+
   return (
     <Page>
       <SEO title={post.title} />
@@ -57,26 +86,39 @@ export default function BlogPost({ data }) {
       <Section>
         <Content>
           <RichText document={document} />
-        </Content>{" "}
+        </Content>
         <div style={{ maxWidth: "200px", margin: "0 auto" }}>
-          <Bio {...post.author} />
+          <Bio
+            name={author.name}
+            role={author.role}
+            image={author.image.file.url}
+          />
         </div>
       </Section>
-      <Section>
-        <H2>Läs mer</H2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-            gridGap: "30px",
-            justifyItems: "center",
-          }}
-        >
-          {posts.map(({ node }) => {
-            return <Post key={node.title} {...node} />
-          })}
-        </div>
-      </Section>
+      {recommendedPosts && (
+        <Section>
+          <H2>Läs mer</H2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+              gridGap: "30px",
+              justifyItems: "center",
+            }}
+          >
+            {recommendedPosts.map(({ node }) => {
+              return (
+                <Post
+                  image={node.image.file.url}
+                  slug={node.slug}
+                  title={node.title}
+                  key={node.title}
+                />
+              )
+            })}
+          </div>
+        </Section>
+      )}
     </Page>
   )
 }
@@ -103,33 +145,26 @@ export const blogPostPageQuery = graphql`
         name
         role
         image {
-          fluid(maxWidth: 1024, maxHeight: 1024) {
-            src
-            srcSet
-            sizes
-            aspectRatio
+          file {
+            url
           }
         }
       }
       publishDate
       tags
+      slug
     }
-    allContentfulBlogPost(
-      limit: 3
-      sort: { order: DESC, fields: publishDate }
-    ) {
+    allContentfulBlogPost(limit: 100, filter: { slug: { ne: $slug } }) {
       edges {
         node {
           title
           slug
           image {
-            fluid(maxWidth: 600, maxHeight: 600, quality: 100) {
-              src
-              srcSet
-              sizes
-              aspectRatio
+            file {
+              url
             }
           }
+          tags
         }
       }
     }

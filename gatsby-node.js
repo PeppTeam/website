@@ -53,11 +53,11 @@ exports.createPages = ({ graphql, actions }) => {
           throw result.errors
         }
 
-        const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
+        const postTemplate = path.resolve(`./src/templates/post.js`)
         _.each(result.data.allContentfulBlogPost.edges, edge => {
           createPage({
             path: `/blogg/${edge.node.slug}/`,
-            component: slash(blogPostTemplate),
+            component: slash(postTemplate),
             context: {
               slug: edge.node.slug,
             },

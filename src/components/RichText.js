@@ -19,6 +19,19 @@ const options = {
       <Link href={node.data.uri}>{children}</Link>
     ),
     [BLOCKS.QUOTE]: (node, children) => <Quote>{children}</Quote>,
+    [BLOCKS.EMBEDDED_ASSET]: node => {
+      const { file } = node.data.target.fields
+      let type = file["en-US"].contentType
+      type = type.split("/")[0]
+      switch (type) {
+        case "image":
+          const src = file["en-US"].url
+          const description = file["en-US"].description
+          return <Asset src={src} description={description} />
+        default:
+          return null
+      }
+    },
     [BLOCKS.EMBEDDED_ENTRY]: node => {
       const fields = node.data.target.fields
       switch (node.data.target.sys.contentType.sys.id) {
@@ -30,11 +43,6 @@ const options = {
           return <Partners fields={fields} />
         case "blockPosts":
           return <Posts fields={fields} />
-        case "image":
-          const { description, image } = fields
-          const url = image["en-US"].fields.file["en-US"].url
-          const text = description["en-US"]
-          return <Asset url={url} description={text} />
         default:
           return null
       }
