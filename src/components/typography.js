@@ -5,16 +5,19 @@ export const H1 = styled.h1`
   margin-bottom: 1.45rem;
   font-family: "Catamaran";
   font-weight: 900;
+  color: ${props => props.theme.body};
 `
 export const H2 = styled.h2`
   margin-bottom: 1.45rem;
   font-family: "Catamaran";
   font-weight: 900;
+  color: ${props => props.theme.body};
 `
 export const H3 = styled.h3`
   margin-bottom: 1.45rem;
   font-family: "Catamaran";
   font-weight: 900;
+  color: ${props => props.theme.body};
 `
 export const H4 = styled.h4`
   margin-bottom: 1.45rem;
@@ -25,7 +28,7 @@ export const H4 = styled.h4`
 export const P = styled.p`
   margin-bottom: 1.45rem;
   font-family: "Catamaran";
-  color: rgb(83, 98, 124);
+  color: ${props => props.theme.text};
 `
 
 export const Bold = styled(P)`
@@ -36,10 +39,11 @@ export const Meta = styled(P)`
   font-size: 0.7em;
   font-style: italic;
   margin: 0;
+  color: ${props => props.theme.meta};
 `
 
 export const Link = styled.a`
-  color: #3ec6ff;
+  color: ${props => props.theme.link};
   font-weight: 800;
   text-decoration: none;
   :hover {
@@ -54,6 +58,8 @@ export const Name = styled(P)`
 export const Role = styled(P)`
   font-size: 0.8em
   margin: 0;
+  color: ${props => props.theme.meta};
+
 `
 
 export const Person = ({ name, role }) => {
@@ -70,7 +76,7 @@ export const Tag = styled.span`
   font-family: Catamaran;
   font-weight: 800;
   display: inline-flex;
-  background-color: #ffd839;
+  background-color: ${props => props.theme.pop};
   align-items: center;
   border-radius: 8px;
   font-size: 0.75rem;
@@ -92,6 +98,6 @@ export const Quote = styled.blockquote`
   line-height: 1.2;
 
   > p {
-    color: #ffd839;
+    color: ${props => props.theme.pop};
   }
 `
