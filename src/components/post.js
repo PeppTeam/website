@@ -7,7 +7,7 @@ export const Post = ({ image, slug, title, tags }) => (
     {image && (
       <div
         style={{
-          background: `url(https:${image})`,
+          background: `url(https:${image}?w=800&q=80)`,
           paddingTop: "100%",
           position: "relative",
           backgroundSize: "cover",

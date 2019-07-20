@@ -44,7 +44,7 @@ export const Testimonial = fields => {
             <div
               style={{
                 borderRadius: "50%",
-                background: `url(https:${image})`,
+                background: `url(https:${image}?w=480&q=75)`,
                 paddingTop: "100%",
                 position: "relative",
                 backgroundSize: "cover",
