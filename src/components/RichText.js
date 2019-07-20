@@ -7,6 +7,7 @@ import { Actions } from "../blocks/Actions"
 import { Team } from "../blocks/Team"
 import { Partners } from "../blocks/Partners"
 import { Posts } from "../blocks/Posts"
+import { Testimonial } from "../blocks/Testimonial"
 
 const options = {
   renderNode: {
@@ -43,6 +44,8 @@ const options = {
           return <Partners fields={fields} />
         case "blockPosts":
           return <Posts fields={fields} />
+        case "blockTestimonial":
+          return <Testimonial fields={fields} />
         default:
           return null
       }

@@ -1,3 +1,4 @@
+import React from "react"
 import styled from "styled-components"
 
 export const H1 = styled.h1`
@@ -27,6 +28,10 @@ export const P = styled.p`
   color: rgb(83, 98, 124);
 `
 
+export const Bold = styled(P)`
+  font-weight: 800;
+`
+
 export const Meta = styled(P)`
   font-size: 0.7em;
   font-style: italic;
@@ -42,6 +47,23 @@ export const Link = styled.a`
     text-decoration: underline;
   }
 `
+export const Name = styled(P)`
+  font-weight: 800;
+  margin: 0;
+`
+export const Role = styled(P)`
+  font-size: 0.8em
+  margin: 0;
+`
+
+export const Person = ({ name, role }) => {
+  return (
+    <div>
+      {name && <Name>{name}</Name>}
+      {role && <Role>{role}</Role>}
+    </div>
+  )
+}
 
 export const Tag = styled.span`
   color: white;

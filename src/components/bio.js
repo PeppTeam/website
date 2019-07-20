@@ -1,4 +1,5 @@
 import React from "react"
+import { Person } from "../components/typography"
 
 export const Bio = ({ name, role, image }) => (
   <div style={{ textAlign: "center" }}>
@@ -24,24 +25,6 @@ export const Bio = ({ name, role, image }) => (
         />
       </div>
     )}
-
-    <p
-      style={{
-        fontFamily: "Catamaran",
-        fontWeight: 800,
-        margin: 0,
-      }}
-    >
-      {name}
-    </p>
-    <p
-      style={{
-        fontFamily: "Catamaran",
-        margin: 0,
-        fontSize: "0.8em",
-      }}
-    >
-      {role}
-    </p>
+    <Person name={name} role={role} />
   </div>
 )
