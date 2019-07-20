@@ -1,65 +1,40 @@
 import React from "react"
 import { Card } from "../components/card"
+import { Section } from "../components/layout"
+import { H2 } from "../components/typography"
+import { RichText } from "../components/RichText"
 
-export const ActionsGroups = fields => {
-  const groups = fields.fields.groups["en-US"]
-  return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-        gridGap: "30px",
-        justifyItems: "center",
-        alignItems: "center",
-      }}
-    >
-      {groups.map(i => {
-        const title = i.fields.title["en-US"]
-        const slug = i.fields.slug["en-US"]
-        return <Card key={title} title={title} slug={slug} />
-      })}
-    </div>
-  )
-}
+export const Actions = fields => {
+  let heading = undefined
+  if (fields.fields.copy && fields.fields.copy["en-US"].fields.heading) {
+    heading = fields.fields.copy["en-US"].fields.heading["en-US"]
+  }
+  let body = undefined
+  if (fields.fields.copy && fields.fields.copy["en-US"].fields.body) {
+    body = fields.fields.copy["en-US"].fields.body["en-US"]
+  }
 
-export const ActionsLinks = fields => {
-  const pages = fields.fields.pages["en-US"]
-  return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
-        gridGap: "30px",
-        justifyItems: "center",
-        alignItems: "center",
-      }}
-    >
-      {pages.map(i => {
-        const title = i.fields.title["en-US"]
-        const slug = i.fields.slug["en-US"]
-        return <Card key={title} title={title} slug={slug} />
-      })}
-    </div>
-  )
-}
+  const actions = fields.fields.actions["en-US"]
 
-export const ActionsJoin = fields => {
-  const pages = fields.fields.pages["en-US"]
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
-        gridGap: "30px",
-        justifyItems: "center",
-        alignItems: "center",
-      }}
-    >
-      {pages.map(i => {
-        const title = i.fields.title["en-US"]
-        const slug = i.fields.slug["en-US"]
-        return <Card key={title} title={title} slug={slug} />
-      })}
-    </div>
+    <Section>
+      <H2>{heading}</H2>
+      {body && <RichText document={body} />}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+          gridGap: "30px",
+          justifyItems: "center",
+          alignItems: "center",
+        }}
+      >
+        {actions.map(i => {
+          const title = i.fields.title["en-US"]
+          const slug = i.fields.slug["en-US"]
+          return <Card key={title} title={title} slug={slug} />
+        })}
+      </div>
+    </Section>
   )
 }

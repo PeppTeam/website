@@ -1,6 +1,6 @@
 import React from "react"
 import Page from "../components/page"
-import { RichText } from "../components/typography"
+import { RichText } from "../components/RichText"
 import { Section } from "../components/layout"
 import SEO from "../components/seo"
 

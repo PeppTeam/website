@@ -1,6 +1,7 @@
 import React from "react"
 import Page from "../components/page"
-import { H1, RichText, H2 } from "../components/typography"
+import { H1, H2 } from "../components/typography"
+import { RichText } from "../components/RichText"
 import { graphql } from "gatsby"
 import { Partner } from "../components/partner"
 import { Post } from "../components/post"
