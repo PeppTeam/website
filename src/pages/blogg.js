@@ -16,11 +16,8 @@ function BlogPage() {
                 slug
                 tags
                 image {
-                  fluid(maxWidth: 600, maxHeight: 600, quality: 100) {
-                    src
-                    srcSet
-                    sizes
-                    aspectRatio
+                  file {
+                    url
                   }
                 }
               }
@@ -40,7 +37,15 @@ function BlogPage() {
             }}
           >
             {allContentfulBlogPost.edges.map(({ node }) => {
-              return <Post {...node} key={node.title} />
+              return (
+                <Post
+                  image={node.image.file.url}
+                  slug={node.slug}
+                  title={node.title}
+                  tags={node.tags}
+                  key={node.title}
+                />
+              )
             })}
           </div>
         </Page>
