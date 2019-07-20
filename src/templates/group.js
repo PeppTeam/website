@@ -3,7 +3,6 @@ import Page from "../components/page"
 import { H1, H2 } from "../components/typography"
 import { RichText } from "../components/RichText"
 import { graphql } from "gatsby"
-import { Partner } from "../components/partner"
 import { Post } from "../components/post"
 import { Card } from "../components/card"
 import { Section } from "../components/layout"
@@ -44,24 +43,6 @@ export default function Group({ data }) {
           </div>
         </Section>
       )}
-      {group.partners && (
-        <Section>
-          <H2>Våra samarbetspartners</H2>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(75px, 1fr))",
-              gridGap: "50px",
-              justifyItems: "center",
-              alignItems: "end",
-            }}
-          >
-            {group.partners.map(partner => {
-              return <Partner key={partner.name} {...partner} />
-            })}
-          </div>
-        </Section>
-      )}
       {otherGroups && (
         <Section>
           <div
@@ -92,16 +73,7 @@ export const groupPageQuery = graphql`
       body {
         json
       }
-      partners {
-        name
-        logo {
-          file {
-            url
-            fileName
-          }
-        }
-        link
-      }
+
       blogPosts {
         title
         slug
