@@ -1,9 +1,8 @@
 import React from "react"
 import Page from "../components/page"
-import { H1, H2 } from "../components/typography"
+import { H1 } from "../components/typography"
 import { RichText } from "../components/RichText"
 import { graphql } from "gatsby"
-import { Post } from "../components/post"
 import { Card } from "../components/card"
 import { Section } from "../components/layout"
 import SEO from "../components/seo"
@@ -22,25 +21,6 @@ export default function Group({ data }) {
         <Section>
           <H1>{group.title}</H1>
           {document && <RichText document={document} />}
-        </Section>
-      )}
-
-      {group.blogPosts && (
-        <Section>
-          <H2>Senaste blogginläggen från {group.title}</H2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-              gridGap: "30px",
-              justifyItems: "center",
-            }}
-          >
-            {group.blogPosts.map(post => {
-              return <Post key={post.title} {...post} />
-            })}
-          </div>
         </Section>
       )}
       {otherGroups && (
@@ -69,22 +49,8 @@ export const groupPageQuery = graphql`
     contentfulGroup(slug: { eq: $slug }) {
       slug
       title
-
       body {
         json
-      }
-
-      blogPosts {
-        title
-        slug
-        image {
-          fluid(maxWidth: 600, maxHeight: 600, quality: 100) {
-            src
-            srcSet
-            sizes
-            aspectRatio
-          }
-        }
       }
     }
     allContentfulGroup(sort: { fields: [title], order: ASC }) {

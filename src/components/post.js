@@ -1,5 +1,4 @@
 import React from "react"
-import Img from "gatsby-image"
 import { H3, Tag } from "./typography"
 import { Clickable } from "../components/actions"
 
@@ -8,12 +7,23 @@ export const Post = ({ image, slug, title, tags }) => (
     {image && (
       <div
         style={{
-          borderRadius: "16px",
-          overflow: "hidden",
+          background: `url(https:${image})`,
+          paddingTop: "100%",
+          position: "relative",
+          backgroundSize: "cover",
           marginBottom: "16px",
+          borderRadius: "16px",
         }}
       >
-        <Img fluid={image.fluid} />
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+          }}
+        />
       </div>
     )}
     <div
