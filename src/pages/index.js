@@ -96,7 +96,14 @@ function IndexPage({ data }) {
           }}
         >
           {partners.map(({ node }) => {
-            return <Partner key={node.name} {...node} />
+            return (
+              <Partner
+                key={node.name}
+                name={node.name}
+                link={node.link}
+                logo={node.logo.file.url}
+              />
+            )
           })}
         </div>
       </Section>
@@ -112,7 +119,14 @@ function IndexPage({ data }) {
           }}
         >
           {friends.map(({ node }) => {
-            return <Partner key={node.name} {...node} />
+            return (
+              <Partner
+                key={node.name}
+                name={node.name}
+                link={node.link}
+                logo={node.logo.file.url}
+              />
+            )
           })}
         </div>
       </Section>

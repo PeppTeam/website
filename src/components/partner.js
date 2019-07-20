@@ -15,7 +15,7 @@ export const Clickable = styled.a`
 export const Partner = ({ name, link, logo }) => (
   <Clickable href={link}>
     <img
-      src={`https:${logo.file.url}`}
+      src={`https:${logo}`}
       alt={name}
       style={{ width: "100%", margin: 0 }}
     />

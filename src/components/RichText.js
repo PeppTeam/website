@@ -5,6 +5,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { Asset } from "../components/asset"
 import { Actions } from "../blocks/Actions"
 import { Team } from "../blocks/Team"
+import { Partners } from "../blocks/Partners"
 
 const options = {
   renderNode: {
@@ -24,6 +25,8 @@ const options = {
           return <Team fields={fields} />
         case "blockActions":
           return <Actions fields={fields} />
+        case "blockPartners":
+          return <Partners fields={fields} />
         case "image":
           const { description, image } = fields
           const url = image["en-US"].fields.file["en-US"].url
