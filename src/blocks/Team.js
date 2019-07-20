@@ -1,6 +1,8 @@
 import React from "react"
 import { Bio } from "../components/bio"
-import { H2, RichText } from "../components/typography"
+import { RichText } from "../components/RichText"
+import { H2 } from "../components/typography"
+
 import { Section } from "../components/layout"
 
 export const Team = fields => {
