@@ -1,13 +1,19 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
+import { Bold } from "../components/typography"
 
 const NavLink = styled(Link)`
-  color: rgb(83, 98, 124);
+  color: ${props => props.theme.text};
+
   text-decoration: none;
   :hover {
-    opacity: 0.8;
+    color: ${props => props.theme.link};
   }
+`
+const Heading = styled(Bold)`
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
 `
 
 const data = [
@@ -64,17 +70,7 @@ const Footer = () => {
               marginTop: "24px",
             }}
           >
-            <p
-              style={{
-                fontFamily: "catamaran",
-                fontWeight: 800,
-                textTransform: "uppercase",
-                margin: 0,
-                color: "#181818",
-              }}
-            >
-              {d.heading}
-            </p>
+            <Heading>{d.heading}</Heading>
             {d.links.map(l => {
               return <NavLink key={l.children} {...l} />
             })}

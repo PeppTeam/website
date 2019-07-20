@@ -18,11 +18,13 @@ const Title = styled(H1)`
 const Intro = styled(P)`
   font-size: 1.2em;
   line-height: 1.5;
+  margin-bottom: 0;
 `
 
 const Date = styled(P)`
   line-height: 1.5;
   text-align: center;
+  color: ${props => props.theme.meta};
 `
 
 function getRelatedPosts(posts, tags) {
