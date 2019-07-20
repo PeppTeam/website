@@ -62,11 +62,14 @@ export const Tag = styled.span`
 `
 
 export const Quote = styled.blockquote`
-  color: #7878e7;
   font-size: 2em;
   font-weight: 800;
   text-align: center;
   max-width: 16em;
-  margin: 0 auto;
-  line-height: 1;
+  margin: 80px auto;
+  line-height: 1.2;
+
+  > p {
+    color: #ffd839;
+  }
 `
