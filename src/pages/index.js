@@ -1,6 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
-
+import { Link, graphql } from "gatsby"
 import Page from "../components/page"
 import SEO from "../components/seo"
 import { H1, H2, P } from "../components/typography"

@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from "gatsby"
 import { Image } from "../components/image"
 import moment from "moment"
 import Page from "../components/page"

@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from "gatsby"
 import Page from "../components/page"
 import { RichText } from "../components/RichText"
 import { Section } from "../components/layout"
