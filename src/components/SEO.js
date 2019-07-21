@@ -18,14 +18,19 @@ function SEO({ description, lang, meta, title }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
-
+  let metaTitle = ""
+  if (title) {
+    metaTitle = `${title} | ${site.siteMetadata.title}`
+  } else {
+    metaTitle = site.siteMetadata.title
+  }
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={metaTitle}
+      titleTemplate={metaTitle}
       meta={[
         {
           name: `description`,
@@ -73,7 +78,7 @@ SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 }
 
 export default SEO

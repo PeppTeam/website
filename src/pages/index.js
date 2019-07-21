@@ -21,7 +21,7 @@ function IndexPage({ data }) {
 
   return (
     <Page>
-      <SEO title="Pepp" />
+      <SEO />
       <section
         style={{
           minHeight: "60vh",
