@@ -4,6 +4,8 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { Image } from "../components/assets"
 import { Actions } from "../blocks/Actions"
+import { Links } from "../blocks/Links"
+
 import { Team } from "../blocks/Team"
 import { Partners } from "../blocks/Partners"
 import { Posts } from "../blocks/Posts"
@@ -41,6 +43,8 @@ const options = {
           return <Actions fields={fields} />
         case "blockCta":
           return <CTA fields={fields} />
+        case "blockLinks":
+          return <Links fields={fields} />
         case "blockPartners":
           return <Partners fields={fields} />
         case "blockPosts":

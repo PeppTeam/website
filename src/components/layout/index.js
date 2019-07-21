@@ -20,5 +20,6 @@ export const Callout = styled.div`
   background-color: ${props => props.theme.callout};
   padding: 32px;
   border-radius: 16px;
+  width: 100%;
   text-align: ${props => (props.center ? "center" : "left")};
 `
