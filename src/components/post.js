@@ -1,31 +1,13 @@
 import React from "react"
 import { H3, Tag } from "./typography"
-import { Clickable } from "../components/actions"
+import { Clickable } from "./Clickable"
+import { SquareImage } from "./assets"
 
 export const Post = ({ image, slug, title, tags }) => (
   <Clickable to={`/blogg/${slug}`}>
-    {image && (
-      <div
-        style={{
-          background: `url(https:${image}?w=800&q=80)`,
-          paddingTop: "100%",
-          position: "relative",
-          backgroundSize: "cover",
-          marginBottom: "16px",
-          borderRadius: "16px",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-          }}
-        />
-      </div>
-    )}
+    <div style={{ marginBottom: "16px" }}>
+      {image && <SquareImage src={image} />}
+    </div>
     <div
       style={{
         display: "flex",
@@ -36,7 +18,11 @@ export const Post = ({ image, slug, title, tags }) => (
     >
       {tags &&
         tags.map(t => {
-          return <Tag key={t}>{t}</Tag>
+          return (
+            <div style={{ marginRight: "4px" }}>
+              <Tag key={t}>{t}</Tag>
+            </div>
+          )
         })}
     </div>
     <H3>{title}</H3>

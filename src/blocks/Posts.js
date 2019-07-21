@@ -1,8 +1,8 @@
 import React from "react"
-import { Post } from "../components/post"
+import { Post } from "../components/Post"
 import { Section } from "../components/layout"
 import { H2 } from "../components/typography"
-import { RichText } from "../components/RichText"
+import { RichText } from "../renderers/RichText"
 
 export const Posts = fields => {
   let heading = undefined

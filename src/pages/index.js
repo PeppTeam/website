@@ -1,12 +1,14 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Page from "../components/page"
-import SEO from "../components/seo"
+import Page from "../renderers/Page"
+import SEO from "../components/SEO"
 import { H1, H2, P } from "../components/typography"
-import { Partner } from "../components/partner"
-import { Post } from "../components/post"
-import { Card } from "../components/card"
+import { Partner } from "../components/Partner"
+import { Post } from "../components/Post"
+import { Card } from "../components/Card"
 import { Section } from "../components/layout"
+import { Button } from "../components/Button"
+
 function IndexPage({ data }) {
   const partners = data.allContentfulPartner.edges.filter(({ node }) => {
     return node.homePage === "Partner"
@@ -63,11 +65,12 @@ function IndexPage({ data }) {
                 image={node.image.file.url}
                 slug={node.slug}
                 title={node.title}
-                key={node.title}
+                key={node.slug}
               />
             )
           })}
         </div>
+        <Button to="/blogg">Till bloggen</Button>
       </Section>
       <Section>
         <H2>Mentorsprogram</H2>
@@ -81,7 +84,7 @@ function IndexPage({ data }) {
           }}
         >
           {groups.map(({ node }) => {
-            return <Card {...node} key={node.title} />
+            return <Card {...node} key={node.slug} />
           })}
         </div>
       </Section>

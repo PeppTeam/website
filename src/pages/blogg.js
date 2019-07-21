@@ -1,8 +1,8 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import Page from "../components/page"
-import SEO from "../components/seo"
-import { Post } from "../components/post"
+import Page from "../renderers/Page"
+import SEO from "../components/SEO"
+import { Post } from "../components/Post"
 
 function BlogPage() {
   return (
@@ -39,11 +39,11 @@ function BlogPage() {
             {allContentfulBlogPost.edges.map(({ node }) => {
               return (
                 <Post
+                  key={node.slug}
                   image={node.image.file.url}
                   slug={node.slug}
                   title={node.title}
                   tags={node.tags}
-                  key={node.title}
                 />
               )
             })}

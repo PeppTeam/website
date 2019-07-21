@@ -2,7 +2,7 @@ import React from "react"
 import { P, H1, H2, H3, H4, Link, Quote } from "../components/typography"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { Asset } from "../components/asset"
+import { Image } from "../components/assets"
 import { Actions } from "../blocks/Actions"
 import { Team } from "../blocks/Team"
 import { Partners } from "../blocks/Partners"
@@ -29,7 +29,7 @@ const options = {
         case "image":
           const src = file["en-US"].url
           const description = file["en-US"].description
-          return <Asset src={src} description={description} />
+          return <Image src={src} description={description} />
         default:
           return null
       }

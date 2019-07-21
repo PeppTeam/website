@@ -1,15 +1,15 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Image } from "../components/image"
+import { FluidImage } from "../components/assets"
 import moment from "moment"
-import Page from "../components/page"
-import { Bio } from "../components/bio"
+import Page from "../renderers/Page"
+import { Bio } from "../components/Bio"
 import { H1, H2, P, Tag } from "../components/typography"
-import { RichText } from "../components/RichText"
+import { RichText } from "../renderers/RichText"
 import { Section, Content } from "../components/layout"
-import { Post } from "../components/post"
+import { Post } from "../components/Post"
 import styled from "styled-components"
-import SEO from "../components/seo"
+import SEO from "../components/SEO"
 
 const Title = styled(H1)`
   text-align: center;
@@ -49,7 +49,7 @@ function getRelatedPosts(posts, tags) {
   return recommendedPosts.slice(0, 3)
 }
 
-export default function BlogPost({ data }) {
+export default function PostTemplate({ data }) {
   const post = data.contentfulBlogPost
   const document = data.contentfulBlogPost.body.json
   const author = post.author
@@ -82,7 +82,7 @@ export default function BlogPost({ data }) {
         </Content>
       </Section>
       <Section>
-        <Image fluid={post.image.fluid} />
+        <FluidImage fluid={post.image.fluid} />
       </Section>
 
       <Section>
