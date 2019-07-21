@@ -7,6 +7,7 @@ const theme = {
   pop: "#ffd839",
   link: "#3ec6ff",
   meta: "rgba(0, 0, 0, 0.5)",
+  callout: "#f7f7f7",
 }
 
 export function Theme(children) {

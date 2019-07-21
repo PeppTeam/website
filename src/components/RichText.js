@@ -8,6 +8,7 @@ import { Team } from "../blocks/Team"
 import { Partners } from "../blocks/Partners"
 import { Posts } from "../blocks/Posts"
 import { Testimonial } from "../blocks/Testimonial"
+import { CTA } from "../blocks/CTA"
 
 const options = {
   renderNode: {
@@ -36,14 +37,16 @@ const options = {
     [BLOCKS.EMBEDDED_ENTRY]: node => {
       const fields = node.data.target.fields
       switch (node.data.target.sys.contentType.sys.id) {
-        case "blockTeam":
-          return <Team fields={fields} />
         case "blockActions":
           return <Actions fields={fields} />
+        case "blockCta":
+          return <CTA fields={fields} />
         case "blockPartners":
           return <Partners fields={fields} />
         case "blockPosts":
           return <Posts fields={fields} />
+        case "blockTeam":
+          return <Team fields={fields} />
         case "blockTestimonial":
           return <Testimonial fields={fields} />
         default:
