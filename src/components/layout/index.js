@@ -15,3 +15,10 @@ export const Content = styled.div`
   max-width: 40em;
   margin: 0 auto;
 `
+
+export const Callout = styled.div`
+  background-color: ${props => props.theme.callout};
+  padding: 32px;
+  border-radius: 16px;
+  text-align: ${props => (props.center ? "center" : "left")};
+`

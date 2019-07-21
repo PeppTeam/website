@@ -1,8 +1,8 @@
 import React from "react"
-import { Card } from "../components/card"
+import { Card } from "../components/Card"
 import { Section } from "../components/layout"
 import { H2 } from "../components/typography"
-import { RichText } from "../components/RichText"
+import { RichText } from "../renderers/RichText"
 
 export const Actions = fields => {
   let heading = undefined

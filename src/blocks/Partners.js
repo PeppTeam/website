@@ -1,8 +1,8 @@
 import React from "react"
-import { Partner } from "../components/partner"
+import { Partner } from "../components/Partner"
 import { Section } from "../components/layout"
 import { H2 } from "../components/typography"
-import { RichText } from "../components/RichText"
+import { RichText } from "../renderers/RichText"
 
 export const Partners = fields => {
   let heading = undefined

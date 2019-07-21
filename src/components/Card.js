@@ -1,25 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import { Clickable } from "../components/actions"
+import { Clickable } from "./Clickable"
+import { Ratio } from "./Ratio"
 
-const Wrapper = styled.div`
+const Background = styled.div`
   border-radius: 16px;
   overflow: hidden;
   width: 100%;
   background-color: ${props => props.theme.link};
-  padding-top: 56.25%;
-  position: relative;
-`
-
-const Absolute = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
 `
 
 const Title = styled.p`
@@ -32,10 +20,10 @@ const Title = styled.p`
 
 export const Card = ({ slug, title }) => (
   <Clickable to={`/${slug}`}>
-    <Wrapper>
-      <Absolute>
+    <Background>
+      <Ratio>
         <Title>{title}</Title>
-      </Absolute>
-    </Wrapper>
+      </Ratio>
+    </Background>
   </Clickable>
 )

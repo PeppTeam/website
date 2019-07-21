@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { Bold } from "../components/typography"
+import { Bold } from "./typography"
 
 const NavLink = styled(Link)`
   color: ${props => props.theme.text};

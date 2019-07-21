@@ -1,9 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Page from "../components/page"
-import { RichText } from "../components/RichText"
+import Page from "../renderers/Page"
+import { RichText } from "../renderers/RichText"
 import { Section } from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "../components/SEO"
 
 export default function BlogPost({ data }) {
   const document = data.contentfulPage.body.json

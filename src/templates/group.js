@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Page from "../components/page"
+import Page from "../renderers/Page"
 import { H1 } from "../components/typography"
-import { RichText } from "../components/RichText"
-import { Card } from "../components/card"
+import { RichText } from "../renderers/RichText"
+import { Card } from "../components/Card"
 import { Section } from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "../components/SEO"
 
 export default function Group({ data }) {
   const group = data.contentfulGroup
