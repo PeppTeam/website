@@ -1,6 +1,6 @@
 import React from "react"
 import { Post } from "../components/Post"
-import { Section } from "../components/layout"
+import { Section, getGridWidth } from "../components/layout"
 import { H2 } from "../components/typography"
 import { RichText } from "../renderers/RichText"
 
@@ -15,6 +15,7 @@ export const Posts = fields => {
   }
 
   const posts = fields.fields.posts["en-US"]
+  const width = getGridWidth(posts.length)
 
   return (
     <Section>
@@ -23,7 +24,7 @@ export const Posts = fields => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+          gridTemplateColumns: `repeat(auto-fill, minmax(${width}px, 1fr))`,
           gridGap: "30px",
           justifyItems: "center",
         }}

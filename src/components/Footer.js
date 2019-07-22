@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { Bold } from "./typography"
+import { getGridWidth } from "./layout"
 
 const NavLink = styled(Link)`
   color: ${props => props.theme.text};
@@ -50,14 +51,14 @@ const data = [
     ],
   },
 ]
-
+const width = getGridWidth(data.length + 1)
 const Footer = () => {
   return (
     <footer
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gridGap: "50px",
+        gridTemplateColumns: `repeat(auto-fill, minmax(${width}px, 1fr))`,
+        gridGap: "20px",
       }}
     >
       {data.map(d => {

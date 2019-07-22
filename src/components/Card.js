@@ -15,13 +15,13 @@ const Title = styled.p`
   font-family: "Catamaran";
   font-weight: 800;
   color: white;
-  font-size: 1.2em;
+  font-size: 1.6em;
 `
 
 export const Card = ({ slug, title }) => (
   <Clickable to={`/${slug}`}>
     <Background>
-      <Ratio>
+      <Ratio ratio="56.25%">
         <Title>{title}</Title>
       </Ratio>
     </Background>

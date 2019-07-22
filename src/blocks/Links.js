@@ -1,19 +1,21 @@
 import React from "react"
-import { Section } from "../components/layout"
+import { Section, getGridWidth } from "../components/layout"
 import { Link } from "../components/Link"
 
 export const Links = fields => {
   const links = fields.fields.links["en-US"]
+
+  const width = getGridWidth(links.length)
 
   return (
     <Section>
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+          gridTemplateColumns: `repeat(auto-fill, minmax(${width}px, 1fr))`,
           gridGap: "30px",
-          justifyItems: "center",
-          alignItems: "center",
+          justifyItems: "start",
+          alignItems: "start",
         }}
       >
         {links.map(l => {

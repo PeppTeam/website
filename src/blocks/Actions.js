@@ -1,6 +1,6 @@
 import React from "react"
 import { Card } from "../components/Card"
-import { Section } from "../components/layout"
+import { Section, getGridWidth } from "../components/layout"
 import { H2 } from "../components/typography"
 import { RichText } from "../renderers/RichText"
 
@@ -15,6 +15,7 @@ export const Actions = fields => {
   }
 
   const actions = fields.fields.actions["en-US"]
+  const width = getGridWidth(actions.length)
 
   return (
     <Section>
@@ -23,8 +24,8 @@ export const Actions = fields => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-          gridGap: "30px",
+          gridTemplateColumns: `repeat(auto-fill, minmax(${width}px, 1fr))`,
+          gridGap: "20px",
           justifyItems: "center",
           alignItems: "center",
         }}

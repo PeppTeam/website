@@ -28,7 +28,7 @@ export default function Group({ data }) {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))",
               gridGap: "30px",
               justifyItems: "center",
               alignItems: "center",

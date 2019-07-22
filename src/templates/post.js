@@ -38,6 +38,11 @@ function getRelatedPosts(posts, tags) {
 
   if (relatedPosts.length > 0) {
     recommendedPosts = relatedPosts
+    let i = 0
+    while (recommendedPosts.length < 3) {
+      recommendedPosts.push(posts[i])
+      i = i + 1
+    }
   } else {
     recommendedPosts = posts
   }
