@@ -5,12 +5,12 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { Image } from "../components/assets"
 import { Actions } from "../blocks/Actions"
 import { Links } from "../blocks/Links"
-
 import { Team } from "../blocks/Team"
 import { Partners } from "../blocks/Partners"
 import { Posts } from "../blocks/Posts"
 import { Testimonial } from "../blocks/Testimonial"
 import { CTA } from "../blocks/CTA"
+import { Video } from "../blocks/Video"
 
 const options = {
   renderNode: {
@@ -26,10 +26,13 @@ const options = {
     [BLOCKS.EMBEDDED_ASSET]: node => {
       const { file } = node.data.target.fields
       let type = file["en-US"].contentType
+      console.log(type)
       type = type.split("/")[0]
+      let src = file["en-US"].url
+
       switch (type) {
         case "image":
-          const src = file["en-US"].url
+          src = file["en-US"].url
           const description = file["en-US"].description
           return <Image src={src} description={description} />
         default:
@@ -53,6 +56,8 @@ const options = {
           return <Team fields={fields} />
         case "blockTestimonial":
           return <Testimonial fields={fields} />
+        case "blockVideo":
+          return <Video fields={fields} />
         default:
           return null
       }
