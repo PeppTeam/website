@@ -23,7 +23,7 @@ const Circle = styled.div`
 `
 
 const Square = styled.div`
-  padding-top: 100%;
+  padding-top: 75%;
   border-radius: 16px;
   background: url(https:${props => props.src}?w=800&q=80);
   position: relative;

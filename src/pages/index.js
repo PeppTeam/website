@@ -6,7 +6,7 @@ import { H1, H2, P } from "../components/typography"
 import { Partner } from "../components/Partner"
 import { Post } from "../components/Post"
 import { Card } from "../components/Card"
-import { Section } from "../components/layout"
+import { Section, HeroSection } from "../components/layout"
 import { Button } from "../components/Button"
 
 function IndexPage({ data }) {
@@ -22,15 +22,7 @@ function IndexPage({ data }) {
   return (
     <Page>
       <SEO />
-      <section
-        style={{
-          minHeight: "60vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-        }}
-      >
+      <HeroSection>
         <H1>Hej, vi är Pepp!</H1>
         <P>
           Pepp är ett mentorsskapsprogram där du som tjej* får en mentor från
@@ -47,9 +39,8 @@ function IndexPage({ data }) {
         <P>
           * Pepp välkomnar alla som identifierar sig som tjejer och som går i
           gymnasiet.
-        </P>{" "}
-      </section>
-
+        </P>
+      </HeroSection>
       <Section>
         <div
           style={{

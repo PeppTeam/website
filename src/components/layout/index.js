@@ -1,15 +1,31 @@
-import React from "react"
 import styled from "styled-components"
 
-export const Section = ({ children }) => (
-  <section
-    style={{
-      marginBottom: `128px`,
-    }}
-  >
-    <div style={{ margin: `0 auto`, maxWidth: 960 }}>{children}</div>
-  </section>
-)
+export const Section = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0px 1.0875rem 1.45rem;
+  padding-top: 64px;
+  padding-bottom: 64px;
+`
+
+export const Wide = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+`
+
+export const HeroSection = styled.div`
+  max-width: 40rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding: 0px 1.0875rem 1.45rem;
+  min-height: 60vh;
+`
 
 export const Content = styled.div`
   max-width: 40em;
@@ -27,9 +43,9 @@ export const Callout = styled.div`
 export function getGridWidth(columns) {
   switch (columns) {
     case 1:
-      return 800
+      return 350
     case 2:
-      return 300
+      return 350
     case 3:
       return 250
     case 4:

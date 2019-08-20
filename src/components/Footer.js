@@ -59,6 +59,8 @@ const Footer = () => {
         display: "grid",
         gridTemplateColumns: `repeat(auto-fill, minmax(${width}px, 1fr))`,
         gridGap: "20px",
+        maxWidth: 960,
+        margin: "0 auto",
       }}
     >
       {data.map(d => {
