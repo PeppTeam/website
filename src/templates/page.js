@@ -25,6 +25,10 @@ export const blogPostPageQuery = graphql`
       body {
         json
       }
+      heading
+      intro {
+        intro
+      }
     }
   }
 `

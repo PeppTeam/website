@@ -9,6 +9,8 @@ import { Team } from "../blocks/Team"
 import { Partners } from "../blocks/Partners"
 import { Posts } from "../blocks/Posts"
 import { Testimonial } from "../blocks/Testimonial"
+import { Text } from "../blocks/Text"
+
 import { CTA } from "../blocks/CTA"
 import { Video } from "../blocks/Video"
 
@@ -56,6 +58,8 @@ const options = {
           return <Team fields={fields} />
         case "blockTestimonial":
           return <Testimonial fields={fields} />
+        case "blockText":
+          return <Text fields={fields} />
         case "blockVideo":
           return <Video fields={fields} />
         default:
