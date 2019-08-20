@@ -27,6 +27,15 @@ export const H4 = styled.h4`
 
 export const P = styled.p`
   margin-bottom: 1.45rem;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-family: "Catamaran";
+  color: ${props => props.theme.text};
+`
+
+export const Intro = styled(P)`
+  font-size: 1.5rem;
+  line-height: 1.4;
   font-family: "Catamaran";
   color: ${props => props.theme.text};
 `
